@@ -4,7 +4,7 @@ A Google Chrome browser extension to track check-in times of employees.
 
 ## Overview
 
-This Google Chrome browser extension allows users to track the check-in times of employees by fetching data from a specified URL. The extension displays the check-in and check-out times, calculates the total working time, and presents the data in a table format within a popup window.
+This Google Chrome browser extension allows users to track the check-in times of employees by fetching data from a specified URL. The extension displays the check-in and check-out times, calculates the total working time, and presents the data in a table format within a popup window. Additionally, it now includes an automated feature to periodically check the URL for updates and provides notifications if the total working time reaches 8 hours.
 
 ## Features
 
@@ -12,6 +12,8 @@ This Google Chrome browser extension allows users to track the check-in times of
 - Calculates check-in and check-out times.
 - Displays the check-in and check-out times in a popup window.
 - Calculates the total working time.
+- Automatically checks the URL every 5 minutes.
+- Displays a notification if total working time reaches 8 hours.
 
 ## Usage
 

@@ -56,9 +56,11 @@ function createTable(data) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const trackButton = document.getElementById("trackButton");
+  const port = chrome.runtime.connect({name: "checkInTracker"});
 
   trackButton.addEventListener("click", () => {
-    chrome.runtime.sendMessage({ action: "fetchData" }, (response) => {
+    port.postMessage({action: "citFetchData"});
+    port.onMessage.addListener(function(response) {
       if (response.success) {
         const outputDiv = document.getElementById("output");
 
