@@ -15,12 +15,12 @@ function calculateTimeDifference(start, end) {
   return timeDiff;
 }
 
-const port = chrome.runtime.connect({name: "checkInTracker"});
+const port = chrome.runtime.connect({ name: "checkInTracker" });
 
 // Periodically check for data and notifications
 setInterval(() => {
-  port.postMessage({action: "citFetchData"});
-  port.onMessage.addListener(function(response) {
+  port.postMessage({ action: "citFetchData" });
+  port.onMessage.addListener(function (response) {
     if (response.success) {
       // Create a DOM element to parse the HTML
       const parser = new DOMParser();
@@ -81,9 +81,11 @@ setInterval(() => {
 
       // Calculate total working hours
       const lastTotalHours = Math.floor(totalMilliseconds / 3600000);
-      const lastTotalMinutes = Math.floor((totalMilliseconds % 3600000) / 60000);
+      const lastTotalMinutes = Math.floor(
+        (totalMilliseconds % 3600000) / 60000
+      );
 
-      if (lastTotalHours >= 7) {
+      if (lastTotalHours == 8 && lastTotalMinutes > 1 && lastTotalMinutes < 6) {
         port.postMessage({
           action: "citPushNotif",
           time: `${lastTotalHours}:${lastTotalMinutes}`,
@@ -93,5 +95,4 @@ setInterval(() => {
       console.error("Error fetching data:", response.error);
     }
   });
-
 }, 5 * 60000); // 5 minutes interval in milliseconds
