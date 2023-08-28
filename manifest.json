@@ -16,16 +16,6 @@
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [
-    {
-      "js": [
-        "content.js"
-      ],
-      "matches": [
-        "*://*/*"
-      ]
-    }
-  ],
   "permissions": [
     "notifications"
   ],
